@@ -271,11 +271,13 @@ const tableMaxHeight = 480;
 .body-wrap {
   display: flex;
   align-items: stretch;
+  min-height: 400px;
 }
 
 .table-col {
   flex: 1 1 0;
   min-width: 0;
+  min-height: 400px;
   overflow: hidden;
 
   :deep(.el-table) {
