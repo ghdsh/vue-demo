@@ -128,10 +128,14 @@ const tableMaxHeight = 480;
           :data="paginated"
           stripe
           style="width: 100%"
-          :max-height="tableMaxHeight"
-          :empty-text="
-            search || activeStatus !== 'all' ? '没有匹配的工单' : '暂无工单数据'
-          ">
+          :max-height="tableMaxHeight">
+          <template #empty>
+            <el-empty
+              :description="
+                search || activeStatus !== 'all' ? '没有匹配的工单' : '暂无工单数据'
+              "
+              :image-size="80" />
+          </template>
           <el-table-column prop="id" label="ID" width="70">
             <template #default="{ row }">
               <span class="id-cell">{{ row.id }}</span>
@@ -291,6 +295,11 @@ const tableMaxHeight = 480;
 
     .el-table__inner-wrapper::before {
       background: var(--border-light);
+    }
+
+    // Minimum body height = 5 rows × 48px, keeps layout stable with few rows
+    .el-table__body-wrapper {
+      min-height: 240px;
     }
   }
 }
